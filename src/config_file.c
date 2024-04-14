@@ -293,6 +293,14 @@ configfile_load (void)
     {
       power_conf->verbose = 0;
     }
+  if (!lisp_read_int (lst, "difficulty", &power_conf->difficulty))
+    {
+      power_conf->difficulty = 1;
+    }
+  if (power_conf->difficulty < 0 || power_conf->difficulty > 2)
+    {
+      power_conf->difficulty = 1;
+    }
   if (!lisp_read_int (lst, "scale_x", &power_conf->scale_x))
     {
       power_conf->scale_x = 2;
